@@ -1,0 +1,30 @@
+I. Clover-isms: Infer pre- and post-conditions for an ATP program
+
+1. Select the ATP: Pick an ATP embedded in a programming language, e.g. Dafny, Rust+Verus, C+Frama-C.
+2. Select and configure the LLM assistant:
+  2a. Pick an LLM-powered tool, e.g. ChatGPT, Claude, GitHub Copilot.
+  2b. Optional: Augment the LLM tool for the task, e.g. make a custom GPT with examples of valid ATP files
+  2c. Write an LLM prompt to ask the tool to lift a spec and verify a program. Specifically, this means infering the weakest preconditions and strongest post-conditions for the provided code, then adding any additional information needed so that the program verifies. The prompting approach may vary with the tool, e.g. Copilot vs. ChatGPT.
+  2d. Optional: Write a script to automate interaction with the LLM.
+3. Curate test programs:
+  3a. Collect correct but unverified programs.
+  3b. As necessary, preprocess them to match the prompt.
+[Do Steps 4-9 for each test program. Any time the LLM generates a result, store that result. Include metadata to precisely define the prompt-and-response history.]
+4. Automatic spec lifting and verification: Prompt the LLM to augment a program.
+5. Automatic verification repair:
+  5a. Verify the output against the ATP verifier.
+  5b. If verification fails, provide the failure output to the LLM and ask it to correct the failure. (Use a standard prompt for this.) Iterate until the LLM stops making progress or some max number of iterations is reached.
+6. Manual spec review: Manually inspect the program to assess the quality of the spec (i.e. the pre- and post-conditions).
+7. Manual spec repair:
+  7a. If there are no specification issues (i.e. pre/post-condition issues), continue to the next step. Otherwise:
+  7b. Manually describe the issues and prompt the LLM to fix them.
+  7c. If specification issues remain, manually write the correct specification and tell the LLM to use it.
+  7d. Repeat step 5 to try to automatically produce a verified program.
+8. Manual verification repair:
+  8a. If verification still fails, manually identify a correction to make progress on verification and prompt the LLM to use this correction.
+  8b. If progress was made, attempt automatic verification repair.
+  8c. Iterate 8a. and 8b. until verification succeeds or failure is declared.
+9. Evaluate the LLM assistant's value:
+  9a. Quantitatively, score the degree of manual intervention needed to complete the task.
+  9b. Qualitatively, assess how much the LLM provided net value vs. net cost as compared to doing the task without LLM assistance.
+  9c. Qualitatively, note any custom take-aways about how to maximize a developer's productivity with an LLM assistant.
