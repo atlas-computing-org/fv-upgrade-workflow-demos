@@ -1,0 +1,6 @@
+Verus training data
+
+papers/...                 - A collection of papers that describe Verus and its use.
+projects/...               - A collection of projects that have used Verus.
+verus-docs_2024-07-17.txt  - The Verus core documentation, pulled from verus/source/docs and augmented with a custom README to contextualize it for an LLM. Non-text files are omitted.
+vstd_2024-07-17.txt        - The Verus stdlib, pulled from verus/source/vstd and augmented with a custom README to contextualize it for an LLM.

@@ -1,0 +1,3 @@
+Collected per-language training data designed for easy input to an LLM, e.g. as a CustomGPT upload. Each file is a self-contained resource. Collections of related files are concatenated into a single file using the concat.sh script. Data includes documentation and implementations.
+
+The concatFiles.sh helper script concatenates the files in a directory and labels each file's text with its filepath. The script omits binaries and git-specific files.
