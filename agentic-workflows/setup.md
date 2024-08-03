@@ -27,5 +27,12 @@
    ANTHROPIC_API_KEY=sk-ant-api03-XXXXXXXXXX
    ```
 
+5. Run the test.
+
+   ```
+   python test.py
+   ```
+
+
 
 
